@@ -2,11 +2,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongo = require('./database/mongoSetup');
+const passportJwtMiddleware = require('./configs/passport').passportJwtMiddleware;
 const app = express();
+
+console.log(passportJwtMiddleware);
 
 app
 	.use(bodyParser.json())
 	.use(bodyParser.urlencoded({extended: false}))
+	.use(passportJwtMiddleware)
 	.get('/', (req, res, next) => {
 		mongo.db.collection('users')
 			.find({})
