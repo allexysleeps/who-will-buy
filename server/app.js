@@ -33,11 +33,12 @@ app
 	// 			}
 	// 		)
 	// })
+	.post('/authenticate', auth.authenticate)
+	.post('/register', auth.register)
 	.get('/protected', passportJwtMiddleware, (req, res, next) => {
 		console.log('test');
 		res.sendStatus(200);
 	} )
-	.post('/authenticate', auth.authenticate)
 	.listen(3000);
 
 console.log(`its's alive`);

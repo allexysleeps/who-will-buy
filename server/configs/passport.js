@@ -39,5 +39,5 @@ const passportJwtMiddleware = (req, res, next) => {
 };
 
 module.exports = {
-	passportJwtMiddleware: passportJwtMiddleware
+	passportJwtMiddleware
 };
