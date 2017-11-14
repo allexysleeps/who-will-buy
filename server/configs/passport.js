@@ -5,19 +5,28 @@ const passportJwt = require('passport-jwt');
 const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 const jwtSecret = require('./secrets').jwtSecret;
+const mongo = require('../database/mongoSetup');
 
 passport.use(new JwtStrategy({
-	jwtFromRequest: ExtractJwt.fromHeader(),
+	jwtFromRequest: ExtractJwt.fromHeader('authorization'),
 	secretOrKey: jwtSecret,
 	passReqToCallback: true
 }, (req, jwtPayload, next) => {
-	console.log(req);
-	next(null, null, {message: 'User not found'})
+	const {email} = jwtPayload;
+	mongo.db.collection('users')
+		.findOne({email}, (err, result) => {
+			if(result) {
+				next(null, result);
+			} else {
+				next(null, null, {message: 'User not found'})
+			}
+		});
 }));
 
 const passportJwtMiddleware = (req, res, next) => {
 	passport.authenticate('jwt', {session: false}, (err, user, info) => {
-		if(err) return next(err)
+		console.log(err, user, info);
+		if(err) return next(err);
 		if(user) {
 			req.user = user.dataValues;
 			next(null, user)
