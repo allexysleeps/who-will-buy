@@ -14,9 +14,9 @@ passport.use(new JwtStrategy({
 }, (req, jwtPayload, next) => {
 	const {email} = jwtPayload;
 	mongo.db.collection('users')
-		.findOne({email}, (err, result) => {
-			if(result) {
-				next(null, result);
+		.findOne({email}, (err, user) => {
+			if(user) {
+				next(null, user);
 			} else {
 				next(null, null, {message: 'User not found'})
 			}
@@ -25,10 +25,9 @@ passport.use(new JwtStrategy({
 
 const passportJwtMiddleware = (req, res, next) => {
 	passport.authenticate('jwt', {session: false}, (err, user, info) => {
-		console.log(err, user, info);
 		if(err) return next(err);
 		if(user) {
-			req.user = user.dataValues;
+			req.user = user;
 			next(null, user)
 		} else {
 			if(info) {
