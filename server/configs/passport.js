@@ -5,7 +5,7 @@ const passportJwt = require('passport-jwt');
 const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 const jwtSecret = require('./secrets').jwtSecret;
-const mongo = require('../database/mongoSetup');
+const mongo = require('../database/mongo');
 
 passport.use(new JwtStrategy({
 	jwtFromRequest: ExtractJwt.fromHeader('authorization'),

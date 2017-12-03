@@ -6,9 +6,8 @@ const passportJwtMiddleware = require('../configs/passport').passportJwtMiddlewa
 
 Router
 	.post('/authenticate', auth.authenticate)
-	.post('/user', auth.register)
+	.post('/register', auth.register)
 	.post('/event', passportJwtMiddleware, events.createEvent)
 	.post('/event/members/:event_id', passportJwtMiddleware, events.setMembers)
-	// .get('/events', passportJwtMiddleware, events.getEventList)
 
 module.exports = Router;
