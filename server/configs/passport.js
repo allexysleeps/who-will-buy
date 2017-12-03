@@ -16,6 +16,7 @@ passport.use(new JwtStrategy({
 	mongo.db.collection('users')
 		.findOne({email}, (err, user) => {
 			if(user) {
+				console.log(user);
 				next(null, user);
 			} else {
 				next(null, null, {message: 'User not found'})

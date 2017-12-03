@@ -3,7 +3,6 @@ const db = require('../database/mongo');
 const ObjectId = require('mongodb').ObjectID;
 
 function createEvent(req, res) {
-	console.log(req.body);
 	const {title, assignment, description, event_icon} = req.body;
 	const admin_id = req.user._id;
 	const newEvent = new db.models.Event({
