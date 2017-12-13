@@ -1,20 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import LoginView from './Views/LoginView/LoginView';
+import {Provider} from 'react-redux';
+import ScreenController from './Screens/ScreenController/ScreenController';
+import store from './Store/store';
 
 export default class App extends React.Component {
   render() {
     return (
-      <LoginView/>
+    	<Provider store={store}>
+		    <ScreenController/>
+	    </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
