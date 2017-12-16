@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import InputText from '../../Components/Inputs/InputText/InputText';
 import Logo from '../../Components/Logo/Logo';
 
