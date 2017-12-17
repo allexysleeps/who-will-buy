@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import InputText from '../../Components/Inputs/InputText/InputText';
 import Logo from '../../Components/Logo/Logo';
+import LoginForm from '../../Partials/LoginForm/LoginForm';
 
 class LoginScreen extends React.Component {
 	constructor() {
@@ -23,10 +24,7 @@ class LoginScreen extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Logo/>
-				<InputText
-					placeholder='email'
-					value={email}
-					onChangeText={(value) => this.getInputValue(value, 'email')}/>
+				<LoginForm/>
 			</View>
 		)
 	}

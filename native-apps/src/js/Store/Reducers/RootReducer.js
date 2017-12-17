@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import formReducer  from 'redux-forms';
+import {reducer as formReducer}  from 'redux-form';
 import AppStateReducer from './AppStateReducer';
 
 const RootReducer = combineReducers({
