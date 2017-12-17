@@ -1,30 +1,19 @@
 import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
-import InputText from '../../Components/Inputs/InputText/InputText';
 import Logo from '../../Components/Logo/Logo';
 import LoginForm from '../../Partials/LoginForm/LoginForm';
+import {palette} from '../../Constants/style';
 
 class LoginScreen extends React.Component {
 	constructor() {
 		super();
-		this.state = {
-			email: null,
-			password: null,
-		}
 	}
 
-	getInputValue = (value, field) => {
-		this.setState({
-			[field]: value
-		})
-	};
-
 	render() {
-		const {email, password} = this.state;
 		return (
 			<View style={styles.container}>
-				<Logo/>
-				<LoginForm/>
+				<Logo />
+				<LoginForm style={styles.form}/>
 			</View>
 		)
 	}
@@ -33,9 +22,12 @@ class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: palette.light_grayish_blue,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	form: {
+		width: "90%"
 	}
 });
 

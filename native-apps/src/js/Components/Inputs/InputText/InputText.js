@@ -1,25 +1,34 @@
 import React from 'react';
-import {TextInput, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
+import {View} from 'react-native';
+import { FormLabel, FormInput } from 'react-native-elements'
 
 class InputText extends React.Component {
 	render() {
-		const {value, onChangeText, placeholder} = this.props;
+		const {label} = this.props;
 		return (
-			<TextInput
-				style={styles.general}
-				value={value}
-				onChangeText={onChangeText}
-				placeholder={placeholder}/>
+			<View>
+				<FormLabel labelStyle={styles.label}>{label}</FormLabel>
+				<FormInput
+					{...this.props}/>
+			</View>
 		)
 	}
 }
 
-const styles = StyleSheet.create({
-	general: {
-		borderColor: 'black',
-		borderWidth: 1,
-		width: 200,
+const styles = {
+	label: {
+		fontSize: 18,
+		fontWeight: "300",
+	},
+	input: {
+		fontSize: 20,
 	}
-});
+
+};
+
+InputText.propTypes = {
+	label: PropTypes.string,
+};
 
 export default InputText;
