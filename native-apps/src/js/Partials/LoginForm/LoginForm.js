@@ -4,7 +4,13 @@ import {View} from 'react-native';
 import InputText from '../../Components/Inputs/InputText/InputText';
 import SubmitButton from '../../Components/Buttons/SubmitButton/SubmitButton';
 
+const submit = values => {
+	console.log('submitting form', values.toJS());
+	return values
+};
+
 const LoginForm = props => {
+
 	const {handleSubmit, style} = props;
 	return (
 		<View style={style}>
@@ -18,7 +24,7 @@ const LoginForm = props => {
 				label='password'
 				secureTextEntry
 				component={InputText}/>
-			<SubmitButton onPress={handleSubmit}/>
+			<SubmitButton onPress={() => handleSubmit(submit)}/>
 		</View>
 	)
 };

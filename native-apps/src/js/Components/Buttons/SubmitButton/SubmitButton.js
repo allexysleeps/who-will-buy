@@ -11,15 +11,18 @@ const SubmitButton = props => {
 			containerViewStyle={{
 				marginTop: 50
 			}}
+			textStyle={{
+				fontSize: 16
+			}}
 			backgroundColor={palette.lime_green}
 			borderRadius={3}
-			title={title}
+			title={title.toUpperCase()}
 			onPress={onPress}/>
 	)
 };
 
 SubmitButton.defaultProps = {
-	title: "submit"
+	title: "submit",
 };
 
 SubmitButton.propTypes = {

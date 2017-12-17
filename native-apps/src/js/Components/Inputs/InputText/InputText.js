@@ -24,7 +24,6 @@ const styles = {
 	input: {
 		fontSize: 20,
 	}
-
 };
 
 InputText.propTypes = {
