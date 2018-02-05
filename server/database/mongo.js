@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = mongoose.createConnection('localhost', 'who-will-buy');
+const db = mongoose.createConnection('mongo', 'who-will-buy');
 const UserModel = require('./models/user');
 const EventModel = require('./models/event');
 
