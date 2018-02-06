@@ -1,7 +1,9 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserModel = new Schema({
+const UserSchema = new Schema({
 	email: {
 		type: String,
 		required: true,
@@ -15,4 +17,4 @@ const UserModel = new Schema({
 	last_name: String,
 });
 
-module.exports = UserModel;
+module.exports = mongoose.model('User', UserSchema);

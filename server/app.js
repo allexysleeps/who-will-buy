@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const Router = require('./routes');
+const Router = require('./src/routes');
 
 app
 	.use(bodyParser.json())
@@ -10,4 +10,4 @@ app
 	.use(Router)
 	.listen(3000);
 
-console.log(`its's alive`);
+console.log(`its's alive on localhost:3000`);
