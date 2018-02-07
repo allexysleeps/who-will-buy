@@ -7,17 +7,20 @@ const passportJwtMiddleware = require('./configs/passport').passportJwtMiddlewar
 const validationMiddleware = require('./validations');
 
 Router
-  //User routes
+  //Users routes
   .post('/authenticate', validationMiddleware.auth, auth.authenticate)
 	.post('/register', auth.register)
 	.get('/profile', passportJwtMiddleware, userProfile.send)
-  //Event routes
+  //Events routes
 	.post('/event', passportJwtMiddleware, eventControllers.createEvent)
   .get('/events/:user_id*?', passportJwtMiddleware, eventControllers.getEventsList)
+  .get('/event/:event_id', passportJwtMiddleware, eventControllers.getEvent)
   .post(
     '/event/member/:event_id',
     passportJwtMiddleware,
     validationMiddleware.eventMembers,
-    eventControllers.addMember);
+    eventControllers.addMember)
+  //Tasks routes
+  .post('/task/:event_id', passportJwtMiddleware, );
 
 module.exports = Router;

@@ -17,6 +17,9 @@ async function addMember(req, res) {
           (err, result) => {
             res.sendStatus(200);
           })
+    } else {
+      res.sendStatus(404);
+      //  Here will go invite func
     }
   } else {
     res.status(400).json(errorFormatter(errors.mapped()))
